@@ -1,123 +1,63 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
 #include "dma.h"
 #include "spi.h"
+#include "usart.h"
 #include "gpio.h"
+#include "tim.h"
+#include "include_files.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-#include "bsp_can.h"
-#include "BLDC_Motor.h"
-#include "bsp_spi.h"
-#include "bsp_delay.h"
-/* USER CODE END Includes */
 
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
 
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
+void INIT_SYSTEM(void);
+int loop_check = 0;
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-  
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_DMA_Init();
-  MX_CAN1_Init();
-  MX_CAN2_Init();
-  MX_SPI4_Init();
-  /* USER CODE BEGIN 2 */
-	can_filter_init();
-	delay_init();
-	BLDC_MOTORS_DATA_INIT();
-	SPI_DATA_INIT();
-	OPEN_POWER();
+  INIT_SYSTEM();
 	
 	delay_ms(2000);
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+	
+	//HAL_TIM_PWM_Stop(&htim12, TIM_CHANNEL_1);
+	//HAL_TIM_Base_Stop(&htim12);
   while (1)
   {
-    /* USER CODE END WHILE */
-		CAN_BLDC_SEND_COMMAND();
-		delay_us(10);
-    /* USER CODE BEGIN 3 */
+    CAN_BLDC_SEND_COMMAND();
+		loop_check++;
   }
   /* USER CODE END 3 */
 }
 
+
+void INIT_SYSTEM()
+{
+	HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_CAN1_Init();
+  MX_CAN2_Init();
+  //MX_USART1_UART_Init();
+  MX_SPI4_Init();
+	//MX_TIM12_Init();
+	
+	//remote_control_init();
+	can_filter_init();
+	BLDC_MOTORS_INIT();
+	SPI_DATA_INIT();
+	OPEN_POWER();
+	
+
+	/*
+	COMMUTE WITH MOTORS
+	CHECK THE ZERO STATE
+	*/
+	delay_ms(1000);
+	//ready
+	
+	
+}
 /**
   * @brief System Clock Configuration
   * @retval None

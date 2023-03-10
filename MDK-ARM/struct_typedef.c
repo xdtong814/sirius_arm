@@ -24,3 +24,16 @@ float fminf(float x, float y){
     /// Returns minimum of x, y ///
     return (((x)<(y))?(x):(y));
     }
+
+		
+void user_delay_us(uint16_t us)
+{
+	for(;us > 0;us--)
+	{
+		for(uint8_t i = 50; i > 0; i--)
+		{
+			;
+		}
+	}
+}
+
