@@ -1,0 +1,9 @@
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/CMakeFiles/spi_com.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/spi/CMakeFiles/spi.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/spi/CMakeFiles/edit_cache.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/spi/CMakeFiles/rebuild_cache.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/Sirius_Arm/CMakeFiles/Sirius_Arm.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/Sirius_Arm/CMakeFiles/edit_cache.dir
+/home/lingwei/CLionProjects/spi_com/cmake-build-debug/Sirius_Arm/CMakeFiles/rebuild_cache.dir

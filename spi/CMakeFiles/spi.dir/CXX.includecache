@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lingwei/CLionProjects/spi_com/spi/spi.cpp
+math.h
+-
+pthread.h
+-
+stdio.h
+-
+string.h
+-
+linux/spi/spidev.h
+-
+spi.h
+/home/lingwei/CLionProjects/spi_com/spi/spi.h
+iostream
+-
+
+/home/lingwei/CLionProjects/spi_com/spi/spi.h
+fcntl.h
+-
+sys/ioctl.h
+-
+linux/spi/spidev.h
+-
+stdint.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+

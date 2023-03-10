@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="six_dof_arm">
+  <link name="world" />
+
+  <joint name="world_to_base_link=" type="fixed">
+     <parent link="world"/>
+     <child link="base_link"/>
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-8.18565693475395E-05 0.000160919977010232 0.0117976891940574"
+        rpy="0 0 0" />
+      <mass
+        value="1.81909180879492" />
+      <inertia
+        ixx="0.00987543299375016"
+        ixy="-7.08651809870738E-06"
+        ixz="-1.8444612077796E-06"
+        iyy="0.0172556841885147"
+        iyz="3.30543249019856E-06"
+        izz="0.0269606543795184" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="base_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="-4.54332707405351E-05 0.0330281553136483 1.94028629631332E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.235406473601654" />
+      <inertia
+        ixx="0.000160607012565252"
+        ixy="2.19448094706555E-07"
+        ixz="-1.11059955432991E-07"
+        iyy="0.000211026969733757"
+        iyz="1.28505266234176E-09"
+        izz="0.00024235784367254" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="link_1">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <joint
+    name="joint_1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0635"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3"
+      upper="3"
+      effort="15"
+      velocity="3" />
+  </joint>
+  <transmission name="joint_1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_1_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="-0.123983448034847 -0.000167759427026362 -0.0161075281625212"
+        rpy="0 0 0" />
+      <mass
+        value="0.2050657060621" />
+      <inertia
+        ixx="5.99414289179861E-05"
+        ixy="-1.30659504989751E-08"
+        ixz="-2.32968333714228E-07"
+        iyy="0.000518464036627089"
+        iyz="-1.46723013267941E-12"
+        izz="0.000555420060716328" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <gazebo reference="link_2">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <joint
+    name="joint_2"
+    type="revolute">
+    <origin
+      xyz="0 0.0598 0.0161"
+      rpy="0 0 0" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="0.26"
+      effort="15"
+      velocity="3" />
+  </joint>
+    <transmission name="joint_2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_2_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="0.0795921032840744 0.0544863432904803 0.0150269748129291"
+        rpy="0 0 0" />
+      <mass
+        value="0.108769772326711" />
+      <inertia
+        ixx="9.3367242976894E-05"
+        ixy="8.5827927234517E-06"
+        ixz="-2.86170084482089E-08"
+        iyy="0.000600921630137833"
+        iyz="3.36973255145296E-08"
+        izz="0.000628605946082781" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+      <gazebo reference="link_3">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <joint
+    name="joint_3"
+    type="revolute">
+    <origin
+      xyz="-0.2995 5E-05 -0.0311"
+      rpy="0 0 0" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3"
+      upper="0"
+      effort="15"
+      velocity="3" />
+  </joint>
+    <transmission name="joint_3_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_3_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="0.0165266443814739 -0.00174069771255481 1.11979181560279E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0444792966223345" />
+      <inertia
+        ixx="2.43072028955947E-05"
+        ixy="1.19532694040292E-06"
+        ixz="2.29104878877617E-11"
+        iyy="3.17415145224588E-05"
+        iyz="6.14642634616325E-11"
+        izz="2.76599362226638E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0.949019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+      <gazebo reference="link_4">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <joint
+    name="joint_4"
+    type="revolute">
+    <origin
+      xyz="0.31235 0.0635 0.015"
+      rpy="0 0 0" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="3"
+      velocity="3" />
+  </joint>
+    <transmission name="joint_4_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_4_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="link_5">
+    <inertial>
+      <origin
+        xyz="0.0176033091473792 -0.0362914142509103 -0.000193904292373495"
+        rpy="0 0 0" />
+      <mass
+        value="0.060436314636669" />
+      <inertia
+        ixx="4.02686986024085E-05"
+        ixy="-3.66834880836016E-06"
+        ixz="-5.01729129104047E-09"
+        iyy="2.67276541678908E-05"
+        iyz="2.5992331923845E-08"
+        izz="4.15933303332631E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+      <gazebo reference="link_5">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <joint
+    name="joint_5"
+    type="revolute">
+    <origin
+      xyz="0.0315 0.0349 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="link_5" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="3"
+      velocity="3" />
+  </joint>
+    <transmission name="joint_5_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_5_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="link_6">
+    <inertial>
+      <origin
+        xyz="0.0088328 -4.7916E-07 -4.2793E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.043795" />
+      <inertia
+        ixx="1.3843E-05"
+        ixy="-2.1512E-10"
+        ixz="-2.2404E-08"
+        iyy="9.2024E-06"
+        iyz="-2.8088E-10"
+        izz="9.2215E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://six_dof_arm/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+      <gazebo reference="link_6">
+    <material>Gazebo/White</material>
+  </gazebo>
+  <joint
+    name="joint_6"
+    type="revolute">
+    <origin
+      xyz="0.04775 -0.03445 0"
+      rpy="0 0 0" />
+    <parent
+      link="link_5" />
+    <child
+      link="link_6" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-10"
+      upper="10"
+      effort="8"
+      velocity="8" />
+  </joint>
+    <transmission name="joint_6_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="joint_6_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/six_dof_arm</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+</robot>
+
